@@ -155,8 +155,8 @@ The server will start at `http://localhost:3000/`. Use Postman or a similar tool
   "product": {
     "name": "Sample Product",
     "quantity": 10
-     }
- }
+      }
+  }
 }
 ```
 
@@ -167,9 +167,10 @@ The server will start at `http://localhost:3000/`. Use Postman or a similar tool
 - **Request Payload**:
 
 - **Success Response**:
+
     ```json
 
- {
+  {
       data: {
       "product": {
         "id": "1",
@@ -177,8 +178,9 @@ The server will start at `http://localhost:3000/`. Use Postman or a similar tool
         "quantity": 20
       },
       "message": "updated successfully"
+      }
+
     }
- }
     ```
 
 ### Delete a Product
@@ -186,12 +188,13 @@ The server will start at `http://localhost:3000/`. Use Postman or a similar tool
 - **URL**: `/products/:id`
 - **Method**: `DELETE`
 - **Success Response**:
+
     ```json
 
-{
+   {
      data: {
          "message": "product deleted"
-    }
+        }
   }
     ```
 
