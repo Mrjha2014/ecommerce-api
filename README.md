@@ -169,7 +169,6 @@ The server will start at `http://localhost:3000/`. Use Postman or a similar tool
 - **Success Response**:
 
     ```json
-
   {
       data: {
       "product": {
@@ -190,7 +189,6 @@ The server will start at `http://localhost:3000/`. Use Postman or a similar tool
 - **Success Response**:
 
     ```json
-
    {
      data: {
          "message": "product deleted"
