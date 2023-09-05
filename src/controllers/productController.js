@@ -1,3 +1,4 @@
+// productController.js
 // This file serves as the controller for all product-related functionalities.
 // It contains the business logic for handling products.
 
@@ -22,7 +23,7 @@ const createProduct = async (req, res) => {
         });
 
         await product.save();
-        res.status(201).json({ product: { name: product.name, quantity: product.quantity } });
+        res.status(201).json({ data: { product: { name: product.name, quantity: product.quantity } } });
     } catch (err) {
         res.status(500).json({ message: 'Internal Server Error' });
     }
@@ -37,25 +38,25 @@ const listProducts = async (req, res) => {
             name: product.name,
             quantity: product.quantity
         }));
-        res.status(200).json({ products: filteredProducts });
+        res.status(200).json({ data: { products: filteredProducts } });
     } catch (err) {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
 
-// Function to list a single product by its ID
+// Fetch a single product by its ID
 const getProductById = async (req, res) => {
-  const { id } = req.params;
+    const { id } = req.params;
 
-  try {
-    const product = await Product.findOne({ id });
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+    try {
+        const product = await Product.findOne({ id });
+        if (!product) {
+            return res.status(404).json({ data: { message: 'Product not found' } });
+        }
+        res.status(200).json({ data: { product: { id: product.id, name: product.name, quantity: product.quantity } } });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
     }
-    res.status(200).json({ product: {id:product.id, name: product.name, quantity: product.quantity } });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error });
-  }
 };
 
 // Function to delete a product
@@ -65,9 +66,9 @@ const deleteProduct = async (req, res) => {
         const product = await Product.findOneAndDelete({ id });
 
         if (product) {
-            res.status(200).json({ message: 'Product deleted successfully' });
+            res.status(200).json({ data: { message: 'Product deleted successfully' } });
         } else {
-            res.status(404).json({ message: 'Product not found' });
+            res.status(404).json({ data: { message: 'Product not found' } });
         }
     } catch (err) {
         res.status(500).json({ message: 'Internal Server Error' });
@@ -88,12 +89,14 @@ const updateProductQuantity = async (req, res) => {
 
         if (product) {
             res.status(200).json({
-                product: {
-                    id: product.id,
-                    name: product.name,
-                    quantity: product.quantity
-                },
-                message: 'Quantity updated successfully'
+                data: {
+                    product: {
+                        id: product.id,
+                        name: product.name,
+                        quantity: product.quantity
+                    },
+                    message: 'Quantity updated successfully'
+                }
             });
         } else {
             res.status(404).json({ message: 'Product not found' });

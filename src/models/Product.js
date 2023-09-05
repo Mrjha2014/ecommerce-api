@@ -6,14 +6,14 @@ const mongoose = require('mongoose');
 
 // Define the schema for the Product model
 const ProductSchema = new mongoose.Schema({
-  // id is a unique identifier for each product, it's required for each record
-  id: { type: Number, required: true, unique: true },
-  
-  // name stores the name of the product and is required
-  name: { type: String, required: true },
-  
-  // quantity stores the quantity of the product and is required
-  quantity: { type: String, required: true },
+    // id is a unique identifier for each product, it's required for each record
+    id: { type: Number, required: true, unique: true },
+
+    // name stores the name of the product and is required
+    name: { type: String, required: true },
+
+    // quantity stores the quantity of the product and is required
+    quantity: { type: String, required: true },
 });
 
 // Export the Product model

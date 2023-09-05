@@ -1,7 +1,7 @@
 // Import required modules
 const express = require('express');
 const bodyParser = require('body-parser');
-const connectDB = require('./config/db'); 
+const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');  //  product routes
 
 // Load environment variables
